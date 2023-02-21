@@ -13,9 +13,10 @@ public static class MapperByVat
     /// <param name="dest">DestNation</typeparam>
     public static void Mapper<TSource>(Context context, DataRow src, VatDto dest) 
     {
-        getMapper(context).vForEach((i, x) => {
-            dest.Additional[x.Key] = src[x.Value];
-        });
+        
+        foreach(KeyValuePair<string, string> item in getMapper(context)) {
+            dest.Additional[item.Key] = src[item.Value];
+        }
     }
 
     /// <summary>
